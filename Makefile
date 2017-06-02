@@ -2,7 +2,7 @@ export GOOS := linux
 export GOARCH := amd64
 
 NAME := buildkite_exporter
-VERSION := 0.1.0
+VERSION := 0.1.1
 
 pkgs = $(shell go list ./... | grep -v /vendor/)
 

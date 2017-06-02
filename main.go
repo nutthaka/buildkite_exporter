@@ -231,7 +231,7 @@ func doGraphQlRequest(url, token, query string) ([]byte, error) {
 
 func main() {
 	var (
-		listenAddress         = flag.String("web.listen-address", ":9101", "Address to listen on for web interface and telemetry.")
+		listenAddress         = flag.String("web.listen-address", ":9260", "Address to listen on for web interface and telemetry.")
 		metricsPath           = flag.String("web.telemetry-path", "/metrics", "Path under which to expose metrics.")
 		buildkiteScrapeURL    = flag.String("buildkite.scrape-url", "https://graphql.buildkite.com/v1", "graphql URL on which to scrape Buildkite.")
 		buildkiteOrganization = flag.String("buildkite.organization", "", "Buildkite organization to scrape.")
