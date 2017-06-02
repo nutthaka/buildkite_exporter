@@ -1,13 +1,10 @@
-GOOS := linux
-GOARCH := amd64
+export GOOS := linux
+export GOARCH := amd64
 
 NAME := buildkite_exporter
 VERSION := 0.1.0
-REVISION = $(shell git rev-parse HEAD)
-BRANCH = $(shell git rev-parse --abbrev-ref HEAD)
 
 pkgs = $(shell go list ./... | grep -v /vendor/)
-pwd = $(shell pwd)
 
 all: style vet build test
 
@@ -23,7 +20,7 @@ vet:
 	@echo ">> vetting code"
 	@go vet $(pkgs)
 
-build: $(PROMU)
+build:
 	@echo ">> building binaries"
 	@go build
 

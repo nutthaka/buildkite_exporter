@@ -7,13 +7,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
 	"strings"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/log"
-	"github.com/prometheus/common/version"
 )
 
 const (
@@ -239,14 +237,8 @@ func main() {
 		buildkiteOrganization = flag.String("buildkite.organization", "", "Buildkite organization to scrape.")
 		buildkiteToken        = flag.String("buildkite.token", "", "Buildkite graphql token.")
 		buildkiteTimeout      = flag.Duration("buildkite.timeout", 10*time.Second, "Timeout for trying to get stats from Buildkite.")
-		showVersion           = flag.Bool("version", false, "Print version information.")
 	)
 	flag.Parse()
-
-	if *showVersion {
-		fmt.Fprintln(os.Stdout, version.Print("buildkite_exporter"))
-		os.Exit(0)
-	}
 
 	if *buildkiteOrganization == "" {
 		log.Fatal("-buildkite.organization is required")
@@ -255,13 +247,9 @@ func main() {
 		log.Fatal("-buildkite.token is required")
 	}
 
-	log.Infoln("Starting buildkite_exporter", version.Info())
-	log.Infoln("Build context", version.BuildContext())
-
 	exporter := NewExporter(*buildkiteScrapeURL, *buildkiteOrganization, *buildkiteToken, *buildkiteTimeout)
 
 	prometheus.MustRegister(exporter)
-	prometheus.MustRegister(version.NewCollector("buildkite_exporter"))
 
 	log.Infoln("Listening on", *listenAddress)
 	http.Handle(*metricsPath, prometheus.Handler())
