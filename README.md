@@ -20,7 +20,7 @@ To view help
 
 ## Usage
 
-Basic usage
+Basic usage, token should have graphql permissions
 
 ```
 buildkite_exporter \
