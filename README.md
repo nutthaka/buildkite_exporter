@@ -1,4 +1,4 @@
-# Buildkite Exporter
+# Buildkite Exporter [![Build Status](https://travis-ci.org/smithamax/buildkite_exporter.svg?branch=master)](https://travis-ci.org/smithamax/buildkite_exporter)
 
 A basic Prometheus exporter for Buildkite.
 
