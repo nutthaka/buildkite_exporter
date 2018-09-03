@@ -1,4 +1,10 @@
-# Buildkite Exporter [![Build Status](https://travis-ci.org/smithamax/buildkite_exporter.svg?branch=master)](https://travis-ci.org/smithamax/buildkite_exporter)
+**Forked from smithamax/buildkite_exporter**
+
+## Run
+
+    docker run --rm -p 9260:9260 -e BK_ORGANIZATION=srting_org -e BK_ACCESS_TOKEN=str_token buildkite_exporter
+
+# Buildkite Exporter
 
 A basic Prometheus exporter for Buildkite.
 
